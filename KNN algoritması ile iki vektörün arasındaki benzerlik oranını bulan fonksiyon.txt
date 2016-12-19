@@ -1,0 +1,25 @@
+class KNN
+    {
+ 
+        public float knnBenzerlikHes(float[] gelenMailVectoru, float[] q)
+        {
+            float benzerlikOranı = 0;
+            float toplamUst = 0, toplamAlt1 = 0, toplamAlt2 = 0;
+ 
+            for (int i = 0; i < gelenMailVectoru.Length; i++)
+            {
+                toplamUst += float.Parse(gelenMailVectoru[i].ToString()) * float.Parse(q[i].ToString());
+ 
+                toplamAlt1 += float.Parse(gelenMailVectoru[i].ToString()) * float.Parse(gelenMailVectoru[i].ToString());
+ 
+                toplamAlt2 += float.Parse(q[i].ToString()) * float.Parse(q[i].ToString());
+            }
+ 
+            benzerlikOranı = toplamUst / (float)(Math.Sqrt(toplamAlt1) * Math.Sqrt(toplamAlt2));
+ 
+            return benzerlikOranı; //0 ile 1 arasında bir değer döner. 1'e ne kadar yakınsa benzerlik o kadar fazladır.
+ 
+ 
+        }
+ 
+    }
